@@ -8,6 +8,7 @@ int selectMenu(){
  printf("2. Add product\n");
  printf("3. Update product\n");
  printf("4. Delete product\n");
+ printf("5. Save data\n");
  printf("0. Exit\n");
  printf("=>Which menu do you want? ");
  scanf("%d", &menu);
@@ -88,7 +89,15 @@ int main(void){
         count--;
         }
     }
+    else if (menu == 5){
+        if(count<=0){
+          printf("There is no data!\n");
+          continue;
+        }
+   	else saveData(); 
+    }	
   }
+
   printf("Ok, goodbye!\n");
   return 0;
 }
