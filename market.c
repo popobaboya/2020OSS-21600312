@@ -94,7 +94,7 @@ int main(void){
           printf("There is no data!\n");
           continue;
         }
-   	else saveData(); 
+   	else saveData(sp, curi); 
     }	
   }
 
