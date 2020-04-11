@@ -42,3 +42,23 @@ void saveData(Product *s[], int count){
 	}
   }
 }
+
+int loadData(Product *s[]){
+  int count = 0;
+  FILE *fp;
+
+  fp = fopen("product.txt", "rt");
+  if(fp == NULL){
+	printf("=> There is no file!\n");
+	return 0;
+  }
+  for(;;count++){
+	s[count] = (Product*)malloc(sizeof(Product));
+	fscanf(fp, "%[^\n]s %d %d %f %d %d %d\n", s[count]->name,&s[count]->weight,&s[count]->cost,&s[count]->s_cost,&s[count]->star, &s[count]->review, &s[count]->event);
+  if(feof(fp)) break;
+  }
+  fclose(fp);
+  printf("=> Loding scccess!\n");
+
+  return count;
+}

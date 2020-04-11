@@ -22,6 +22,9 @@ int main(void){
  int count =0, menu;
  int deleteok=0;
  int curi =0;
+ 
+ count = loadData(sp);
+ curi = count; 
 
  #ifdef DEBUG
  printf("\ndebug[main.c] startline\n");
