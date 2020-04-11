@@ -30,3 +30,27 @@ int selectDataNo(Product *s[], int count){
   
   return num;
 }
+
+void saveData(Product *s[], int count){
+  FILE *fp;
+
+  fp = fopen("product.txt", "wt");
+  for(int i=0;i<count;i++){
+	if(s[i] != NULL){
+	  fprintf(fp, "%s %d %d %d %d %d %d\n", s[i]->name, s[i]->weight, 
+	  s[i]->cost, s[i]->s_cost, s[i]->star, s[i]->review, s[i]->event)
+	}
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
