@@ -62,7 +62,7 @@ void readProduct(Product s){
  strcpy(event, "2+1");
  else strcpy(event, "---");
 
- printf("   %-11s %-10d  %-5d %-9.1f %-5d %-7d %s\n", s.name, s.weight, s.cost, s.s_cost, s.star, s.review, event);
+ printf("  %-11s %-10d  %-5d %-9.1f %-5d %-7d %s\n", s.name, s.weight, s.cost, s.s_cost, s.star, s.review, event);
 
 }
 

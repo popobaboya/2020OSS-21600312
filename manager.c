@@ -33,14 +33,14 @@ int selectDataNo(Product *s[], int count){
 
 void saveData(Product *s[], int count){
   FILE *fp;
-
   fp = fopen("product.txt", "wt");
   for(int i=0;i<count;i++){
 	if(s[i] != NULL){
-	  fprintf(fp, "%s %d %d %f %d %d %d\n", s[i]->name, s[i]->weight, 
-	  s[i]->cost, s[i]->s_cost, s[i]->star, s[i]->review, s[i]->event);
+	  fprintf(fp, "%d %d %f %d %d %d %s\n",s[i]->weight, 
+	  s[i]->cost, s[i]->s_cost, s[i]->star, s[i]->review, s[i]->event, s[i]->name);
 	}
   }
+  printf("Successfully saved!\n");
 }
 
 int loadData(Product *s[]){
@@ -54,9 +54,10 @@ int loadData(Product *s[]){
   }
   for(;;count++){
 	s[count] = (Product*)malloc(sizeof(Product));
-	fscanf(fp, "%[^\n]s %d %d %f %d %d %d\n", s[count]->name,&s[count]->weight,&s[count]->cost,&s[count]->s_cost,&s[count]->star, &s[count]->review, &s[count]->event);
-  if(feof(fp)) break;
-  }
+	fscanf(fp, "%d %d %f %d %d %d %[^\n]s\n",&s[count]->weight,&s[count]->cost,
+&s[count]->s_cost,&s[count]->star, &s[count]->review, &s[count]->event, s[count]->name);
+  	if(feof(fp)) break;
+  } 
   fclose(fp);
   printf("=> Loding scccess!\n");
 
