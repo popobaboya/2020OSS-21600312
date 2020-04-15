@@ -93,7 +93,7 @@ void Search(Product *s[],int curi){
 	searchReview(s, curi);	
  }
  else if(menu==6){
-//	searchEvent(s, curi);	
+	searchEvent(s, curi);	
  }
  else if(menu==0){
  	return;
@@ -310,6 +310,51 @@ void searchReview(Product *s[], int curi){
 	  }
 	  else if(select==3){
 		if(s[i]->review == search){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	  }
+	}
+	  
+	
+ }
+ if(scount==0) printf("=> No data found\n");
+}
+void searchEvent(Product *s[], int curi){
+ int scount=0;
+ int select=0;
+
+ printf("\n1. 1+1 event\n");
+ printf("2. 2+1 event\n");
+ printf("3. No event\n");
+ printf("Select the number you want : ");
+ scanf("%d", &select);
+ while(select<0||select>3){
+	printf("Enter right number : ");
+	scanf("%d", &select);
+ }
+
+ printf("\nNo  name        weight(g)   cost  cost/10g  star  review  event\n");
+ printf("=================================================================\n");
+ for(int i=0; i<curi; i++){
+	if(s[i]!=NULL){
+	  if(select==1){
+		if(s[i]->event == 1){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	  } 
+	  else if(select==2){
+		if(s[i]->event == 2){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	  }
+	  else if(select==3){
+		if(s[i]->event == 0){
 			printf("%2d", i+1);
 			readProduct(*s[i]);
 			scount++;	
