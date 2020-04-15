@@ -87,7 +87,7 @@ void Search(Product *s[],int curi){
 	searchS_Cost(s, curi);	
  }
  else if(menu==4){
-//	searchStar(s, curi);	
+	searchStar(s, curi);	
  }
  else if(menu==5){
 //	searchReview(s, curi);	
@@ -133,7 +133,7 @@ void searchCost(Product *s[], int curi){
  	printf("Enter 0 or bigger :");
 	scanf("%d", &search);
  }
- printf("1. Grater than or equal to %d\n", search);
+ printf("\n1. Grater than or equal to %d\n", search);
  printf("2. Less than or equal to %d\n", search);
  printf("3. Equal to %d\n", search);
  printf("Select the number you want : ");
@@ -184,7 +184,7 @@ void searchS_Cost(Product *s[], int curi){
  	printf("Enter 0 or bigger :");
 	scanf("%f", &search);
  }
- printf("1. Grater than or equal to %.1f\n", search);
+ printf("\n1. Grater than or equal to %.1f\n", search);
  printf("2. Less than or equal to %.1f\n", search);
  printf("Select the number you want : ");
  scanf("%d", &select);
@@ -217,6 +217,59 @@ void searchS_Cost(Product *s[], int curi){
  }
  if(scount==0) printf("=> No data found\n");
 }
+void searchStar(Product *s[], int curi){
+ int scount=0;
+ int  search=0;
+ int select=0;
+
+ printf("Enter a number of star to search : ");
+ scanf("%d", &search);
+ while(search<1||search>5){
+ 	printf("Enter 1 to between 5 :");
+	scanf("%d", &search);
+ }
+ printf("\n1. Grater than or equal to %d\n", search);
+ printf("2. Less than or equal to %d\n", search);
+ printf("3. Equal to %d\n", search);
+ printf("Select the number you want : ");
+ scanf("%d", &select);
+ while(select<0||select>3){
+	printf("Enter right number : ");
+	scanf("%d", &select);
+ }
+
+ printf("\nNo  name        weight(g)   cost  cost/10g  star  review  event\n");
+ printf("=================================================================\n");
+ for(int i=0; i<curi; i++){
+	if(s[i]!=NULL){
+	  if(select==1){
+		if(s[i]->star >= search){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	  } 
+	  else if(select==2){
+		if(s[i]->star <= search){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	  }
+	  else if(select==3){
+		if(s[i]->star == search){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	  }
+	}
+	  
+	
+ }
+ if(scount==0) printf("=> No data found\n");
+}
+
 
 
 
