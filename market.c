@@ -3,12 +3,14 @@
 
 int selectMenu(){
  int menu;
+ rewind(stdin);
  printf("\n**** Product Management ****\n");
  printf("1. Read product\n");
  printf("2. Add product\n");
  printf("3. Update product\n");
  printf("4. Delete product\n");
  printf("5. Save data\n");
+ printf("6. Search product\n");
  printf("0. Exit\n");
  printf("=>Which menu do you want? ");
  scanf("%d", &menu);
@@ -99,8 +101,15 @@ int main(void){
         }
    	else saveData(sp, curi); 
     }	
-  }
-
+    else if (menu == 6){
+        if(count<=0){
+          printf("There is no data!\n");
+          continue;
+        }
+   	else Search(sp, curi);  
+    }
+ 
+ }
   printf("Ok, goodbye!\n");
   return 0;
 }

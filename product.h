@@ -17,7 +17,7 @@
     int updateProduct(Product *s); // 데이터 수정 함수
     void saveData(Product *s[], int count); //파일입력 함수
     int loadData(Product *s[]); //파일출력 함수
-    void Search(Product *s[]); //검색함수, 검색방법을 물어보고 해당하는 함수를 호출 
+    void Search(Product *s[], int curi); //검색함수, 검색방법을 물어보고 해당하는 함수를 호출 
     void searchName(Product *s[], int curi); //이름을 이용한 검색 함수
     void searchCost(Product *s[], int curi); //가격을 이용한 검색 함수
     void searchStar(Product *s[], int curi); //별점수를 이용한 검색 함수

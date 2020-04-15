@@ -63,3 +63,67 @@ int loadData(Product *s[]){
 
   return count;
 }
+
+void Search(Product *s[],int curi){
+ int menu;
+ printf("\n**** Search menu ****\n");
+ printf("1. Name\n");
+ printf("2. Cost\n");
+ printf("3. Standard cost\n");
+ printf("4. Star\n");
+ printf("5. Review\n");
+ printf("6. Event\n");
+ printf("0. Exit\n");
+ printf("=>Which menu do you want? ");
+ scanf("%d", &menu);
+ 
+ if(menu==1){
+	searchName(s, curi);	
+ }
+ else if(menu==2){
+//	searchCost(s, curi);	
+ }
+ else if(menu==3){
+//	searchStar(s, curi);	
+ }
+ else if(menu==4){
+//	searchS_Cost(s, curi);	
+ }
+ else if(menu==5){
+//	searchReview(s, curi);	
+ }
+ else if(menu==6){
+//	searchEvent(s, curi);	
+ }
+ else if(menu==0){
+ 	return;
+ }
+ 
+}
+void searchName(Product *s[], int curi){
+ int scount =0;
+ char search[20];
+
+ rewind(stdin);
+ getchar();
+ printf("Enter a name to search : ");
+ scanf("%[^\n]s", search);
+
+ printf("\nNo  name        weight(g)   cost  cost/10g  star  review  event\n");
+ printf("=================================================================\n");
+ for(int i=0; i<curi; i++){
+	if(s[i]!=NULL){
+		if(strstr(s[i]->name, search)){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	}
+ }
+ if(scount==0) printf("=> No data found\n");
+}
+
+
+
+
+
