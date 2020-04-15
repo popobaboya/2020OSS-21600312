@@ -81,13 +81,13 @@ void Search(Product *s[],int curi){
 	searchName(s, curi);	
  }
  else if(menu==2){
-//	searchCost(s, curi);	
+	searchCost(s, curi);	
  }
  else if(menu==3){
-//	searchStar(s, curi);	
+	searchS_Cost(s, curi);	
  }
  else if(menu==4){
-//	searchS_Cost(s, curi);	
+//	searchStar(s, curi);	
  }
  else if(menu==5){
 //	searchReview(s, curi);	
@@ -122,7 +122,55 @@ void searchName(Product *s[], int curi){
  }
  if(scount==0) printf("=> No data found\n");
 }
+void searchCost(Product *s[], int curi){
+ int scount =0;
+ int search =0;
 
+ printf("Enter a cost to search : ");
+ scanf("%d", &search);
+ while(search<0){
+ 	printf("Enter 0 or bigger :");
+	scanf("%d", &search);
+ }
+
+ printf("\nNo  name        weight(g)   cost  cost/10g  star  review  event\n");
+ printf("=================================================================\n");
+ for(int i=0; i<curi; i++){
+	if(s[i]!=NULL){
+		if(s[i]->cost== search){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	}
+ }
+ if(scount==0) printf("=> No data found\n");
+}
+void searchS_Cost(Product *s[], int curi){
+ int scount=0;
+ float  search=0;
+
+
+ printf("Enter a standard cost to search : ");
+ scanf("%d", &search);
+ while(search<0){
+ 	printf("Enter 0 or bigger :");
+	scanf("%f", &search);
+ }
+
+ printf("\nNo  name        weight(g)   cost  cost/10g  star  review  event\n");
+ printf("=================================================================\n");
+ for(int i=0; i<curi; i++){
+	if(s[i]!=NULL){
+		if(s[i]->s_cost== search){
+			printf("%2d", i+1);
+			readProduct(*s[i]);
+			scount++;	
+		}
+	}
+ }
+ if(scount==0) printf("=> No data found\n");
+}
 
 
 
